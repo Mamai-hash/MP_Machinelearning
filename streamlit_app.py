@@ -40,6 +40,9 @@ with st.expander('Data visualization'):
         title='Distribution of Patient Age',
         color_discrete_sequence=['#FF6347'] # Tomato/Orange-Red (Less aggressive than pure red)
     )
+    # ADDED: Marker styling for borders
+    fig_hist.update_traces(marker=dict(line=dict(width=1, color='DarkSlateGrey')))
+
     fig_hist.update_layout(
         xaxis_title="Age (Years)",
         yaxis_title="Count of Patients",
