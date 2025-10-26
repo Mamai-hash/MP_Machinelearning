@@ -19,16 +19,4 @@ with st.expander('Data'):
   Y = df.TenYearCHD
   Y  
 with st.expander ('Data visualization'):
-   #CREATE the Plotly Figure (Only once!)
-    fig = px.histogram(
-        df,
-        x='age',
-        nbins=10,
-        title='Distribution of Patient Age',
-        # This is a good, distinct color for the heart app
-        color_discrete_sequence=['#ff4b4b'] ) 
-    fig.update_layout(
-    xaxis_title="Age (Years)",
-    yaxis_title="Count of Patients"
-)
-    st.plotly_chart(fig, use_container_width=True)
+   st.scatter_chart(date = df, x = 'age', y = 'sysBP', color = 'TenYearCHD')
