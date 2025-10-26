@@ -2,11 +2,9 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px # Added the necessary import for px
 
-# Use Streamlit's cache to avoid reloading data every time
 @st.cache_data
 def load_data():
     """Loads and returns the cleaned heart risk data."""
-    # Using the raw link provided earlier
     df = pd.read_csv('https://raw.githubusercontent.com/Mamai-hash/MP_Machinelearning/refs/heads/master/heart_risk_data_CLEANED.xls')
     return df
 
