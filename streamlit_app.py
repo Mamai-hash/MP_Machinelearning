@@ -19,18 +19,27 @@ with st.expander('Data'):
   Y = df.TenYearCHD
   Y  
 with st.expander ('Data visualization'):
-   st.scatter_chart(date = df, x = 'age', y = 'sysBP', color = 'TenYearCHD')
-
-with st.expander ('Data visualization'):
-  fig_scatter = px.scatter(
+   fig_hist = px.histogram(
+        df,
+        x='age',
+        nbins=10,
+        title='Distribution of Patient Age',
+        color_discrete_sequence=['#ff4b4b'] 
+    )
+    fig_hist.update_layout(
+        xaxis_title="Age (Years)",
+        yaxis_title="Count of Patients"
+    )
+    st.plotly_chart(fig_hist, use_container_width=True)  
+    fig_scatter = px.scatter(
         df,
         x='age',
         y='sysBP',
-        color='TenYearCHD', # Plotly correctly uses the 'color' parameter for grouping
+        color='TenYearCHD', # This works with Plotly
         title='Age vs. Systolic BP: CHD Risk Breakdown',
         labels={'sysBP': 'Systolic Blood Pressure (mmHg)'},
-        # Map colors for clarity: Blue for No CHD, Red for CHD
-        color_discrete_map={0: 'blue', 1: 'red'},
+        color_discrete_map={0: 'blue', 1: 'red'}, 
+    ) 
+    st.plotly_chart(fig_scatter, use_container_width=True)
+    st.write("Scatter Plot: Blue points = No CHD (0), Red points = Has CHD (1)")
     )
-st.write("Scatter Plot: Blue points = No CHD (0), Red points = Has CHD (1)")
-st.plotly_chart(fig_scatter, use_container_width=True)
