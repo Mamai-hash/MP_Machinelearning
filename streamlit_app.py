@@ -19,7 +19,7 @@ with st.expander('Data'):
   Y = df.TenYearCHD
   Y  
 with st.expander ('Data visualization'):
-   CREATE the Plotly Figure (Only once!)
+   #CREATE the Plotly Figure (Only once!)
     fig = px.histogram(
         df,
         x='age',
