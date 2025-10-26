@@ -4,7 +4,7 @@ import pandas as pd
 
 st.title('Heart Risk Predictor App')
 
-st.write('This app buils a machine learning model')
+st.write('This app builds a machine learning model')
 
 with st.expander('Data'):
   st.write('**Raw data**')
