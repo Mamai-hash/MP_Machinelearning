@@ -28,11 +28,10 @@ with st.expander('Data'):
     Y = df.TenYearCHD
     st.dataframe(Y)
 
-# --- Data Visualization (Aesthetics Corrected) ---
+# --- Data Visualization (Aesthetics) ---
 with st.expander('Data visualization'):
 
     # 1. Age Distribution Histogram
-    # Changed color to a slightly more subdued, theme-friendly color
     fig_hist = px.histogram(
         df,
         x='age',
@@ -40,7 +39,6 @@ with st.expander('Data visualization'):
         title='Distribution of Patient Age',
         color_discrete_sequence=['#FF6347'] # Tomato/Orange-Red (Less aggressive than pure red)
     )
-    # ADDED: Marker styling for borders
     fig_hist.update_traces(marker=dict(line=dict(width=1, color='DarkSlateGrey')))
 
     fig_hist.update_layout(
@@ -53,8 +51,6 @@ with st.expander('Data visualization'):
     st.plotly_chart(fig_hist, use_container_width=True)
 
     # 2. Age vs. Systolic BP Scatter Plot
-    # Corrected the color mapping and ensured it uses discrete colors for the two groups (0 and 1)
-    # The default Plotly color behavior was using a continuous scale because 'color' was specified
     fig_scatter = px.scatter(
         df,
         x='age',
