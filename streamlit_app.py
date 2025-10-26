@@ -26,7 +26,7 @@ with st.expander ('Data visualization'):
         title='Distribution of Patient Age',
         color_discrete_sequence=['#ff4b4b'] 
     )
-    fig_hist.update_layout(
+  fig_hist.update_layout(
         xaxis_title="Age (Years)",
         yaxis_title="Count of Patients"
     )
