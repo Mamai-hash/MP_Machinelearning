@@ -28,7 +28,7 @@ with st.expander ('Data visualization'):
         # This is a good, distinct color for the heart app
         color_discrete_sequence=['#ff4b4b'] ) 
     fig.update_layout(
-        xaxis_title="Age (Years)",  <-- Indent these lines by 4 spaces (or one tab)
-        yaxis_title="Count of Patients"
-       )
+    xaxis_title="Age (Years)",
+    yaxis_title="Count of Patients"
+)
     st.plotly_chart(fig, use_container_width=True)
