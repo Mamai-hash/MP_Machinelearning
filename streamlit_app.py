@@ -2,75 +2,73 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px # Added the necessary import for px
 
-st.title('Heart Risk Predictor App')
-
-st.info('This app builds a machine learning model!')
-
-# Initialize a default state for the application
-if 'app_state' not in st.session_state:
-    st.session_state.app_state = 'data_loading'
-
+# Use Streamlit's cache to avoid reloading data every time
 @st.cache_data
 def load_data():
-    """Loads and caches the dataset."""
-    try:
-        df = pd.read_csv('https://raw.githubusercontent.com/Mamai-hash/MP_Machinelearning/refs/heads/master/heart_risk_data_CLEANED.xls')
-        return df
-    except Exception as e:
-        st.error(f"Error loading data: {e}")
-        return pd.DataFrame()
+    """Loads and returns the cleaned heart risk data."""
+    # Using the raw link provided earlier
+    df = pd.read_csv('https://raw.githubusercontent.com/Mamai-hash/MP_Machinelearning/refs/heads/master/heart_risk_data_CLEANED.xls')
+    return df
+
+# --- App Layout ---
+st.title('Heart Risk Predictor App')
+st.info('This app builds a machine learning model!')
 
 df = load_data()
 
-if df.empty:
-    st.stop()
+with st.expander('Data'):
+    st.write('**Raw data**')
+    st.dataframe(df)
 
-with st.expander('Data Exploration'):
-    st.subheader('Raw Data')
-    st.dataframe(df.head())
-
-    st.subheader('Feature Data (X)')
+    st.write('**X (Features)**')
     X = df.drop('TenYearCHD', axis=1)
-    st.dataframe(X.head())
+    st.dataframe(X)
 
-    st.subheader('Target Variable (Y)')
+    st.write('**Y (Target Variable)**')
     Y = df.TenYearCHD
-    st.dataframe(Y.head())
+    st.dataframe(Y)
 
-# Corrected Data visualization block
+# --- Data Visualization (Aesthetics Corrected) ---
 with st.expander('Data visualization'):
-    # Histogram of Age
+
+    # 1. Age Distribution Histogram
+    # Changed color to a slightly more subdued, theme-friendly color
     fig_hist = px.histogram(
         df,
         x='age',
         nbins=10,
         title='Distribution of Patient Age',
-        color_discrete_sequence=['#ff4b4b']
+        color_discrete_sequence=['#FF6347'] # Tomato/Orange-Red (Less aggressive than pure red)
     )
-    # The indentation for update_layout is now correctly aligned with the code block
     fig_hist.update_layout(
         xaxis_title="Age (Years)",
         yaxis_title="Count of Patients",
-        font=dict(family="Inter", size=14)
+        # Customizing the background to make it look cleaner
+        plot_bgcolor='rgba(0,0,0,0)',
+        paper_bgcolor='rgba(0,0,0,0)',
     )
     st.plotly_chart(fig_hist, use_container_width=True)
 
-    # Scatter Plot: Age vs. Systolic BP
+    # 2. Age vs. Systolic BP Scatter Plot
+    # Corrected the color mapping and ensured it uses discrete colors for the two groups (0 and 1)
+    # The default Plotly color behavior was using a continuous scale because 'color' was specified
     fig_scatter = px.scatter(
         df,
         x='age',
         y='sysBP',
-        color='TenYearCHD',  # Color by the target variable
+        color='TenYearCHD', # This tells Plotly to color by this categorical column
         title='Age vs. Systolic BP: CHD Risk Breakdown',
         labels={'sysBP': 'Systolic Blood Pressure (mmHg)'},
-        color_discrete_map={0: 'blue', 1: 'red'},
+        # Defined clear, distinct colors: Green for No Risk (0), Red for Risk (1)
+        color_discrete_map={0: 'green', 1: 'red'},
+        opacity=0.6,
     )
     fig_scatter.update_layout(
-        font=dict(family="Inter", size=14)
+        xaxis_title="Age (Years)",
+        yaxis_title="Systolic Blood Pressure (mmHg)",
+        # Customizing the background
+        plot_bgcolor='rgba(0,0,0,0)',
+        paper_bgcolor='rgba(0,0,0,0)',
     )
-
     st.plotly_chart(fig_scatter, use_container_width=True)
-    st.write("Scatter Plot: Blue points = No CHD (0), Red points = Has CHD (1)")
-
-st.sidebar.markdown("## ML Model Settings")
-st.sidebar.markdown("More features to be added here soon!")
+    st.write("Scatter Plot Legend: <span style='color:green;'>Green points = No CHD (0)</span>, <span style='color:red;'>Red points = Has CHD (1)</span>", unsafe_allow_html=True)
