@@ -73,9 +73,9 @@ with st.expander('Data visualization'):
 # Data preparations
 with st.sidebar:
     st.header('input features') 
-    sex = st.selectbox ('sex',('male', 'female'))
-    prevalentStroke = st.selectbox ('prevalentStroke',(0: 'No', 1: 'yes'))
-    heartRate = st.slider('heartRate(beats) 40, 75.79, 394))
+       sex = st.selectbox ('sex',('male', 'female'))
+       prevalentstroke = st.selectbox('prevalentstroke', ('No (0)', 'Yes (1)'))
+       heartRate = st.slider('heartRate(beats) 40, 75.79, 394))
     
     
     
