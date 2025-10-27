@@ -69,3 +69,13 @@ with st.expander('Data visualization'):
     )
     st.plotly_chart(fig_scatter, use_container_width=True)
     st.write("Scatter Plot Legend: <span style='color:green;'>Green points = No CHD (0)</span>, <span style='color:red;'>Red points = Has CHD (1)</span>", unsafe_allow_html=True)
+
+# Data preparations
+with st.sidebar:
+    st.header('input features') 
+    sex = st.selectbox ('sex',('male', 'female'))
+    prevalentStroke = st.selectbox ('prevalentStroke',(0: 'No', 1: 'yes'))
+    heartRate = st.slider('heartRate(beats per minute) 40, 75.79, 394))
+    
+    
+    
