@@ -75,7 +75,7 @@ with st.sidebar:
     st.header('input features') 
     sex = st.selectbox ('sex',('male', 'female'))
     prevalentstroke = st.selectbox('prevalentstroke', ('No (0)', 'Yes (1)'))
-    heartRate = st.slider('heartRate(beats) 40, 75.79, 394))
+    heartRate = st.slider('Heart Rate (beats)', min_value=40, max_value=120, value=75)
     
     
     
