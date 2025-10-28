@@ -79,6 +79,16 @@ with st.sidebar:
     heartRate = st.slider('Heart Rate (beats)', min_value=40, max_value=120, value=75)
     sysBP = st.slider('sysBP (mmHg)', min_value=83.5, max_value=295.0, value=132.4)
     totChol = st.slider('totChol (mg/dL)', min_value=10.07, max_value=696.0, value=236.7)
+
+# Create a Dataframe for the input features   
+data = { 'sex':sex,
+       'prevalentstroke': prevalentstroke,
+       'age':age,
+       'heartRate':heartRate,
+       'sysBP':sysBP,
+       'totChol':totChol}
+iinput_df = pd.DataFrame(data,index=[0])
+input_heartriskdata = pd.concat([input_df,x],axis=0)
     
     
     
