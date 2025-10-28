@@ -98,7 +98,6 @@ data = 'male': sex_encoded,
     }
  # Create DataFrame, ensuring the columns match the exact order of the training data (X.columns)
 input_df = pd.DataFrame([data], columns=X.columns, index=[0])
-input_heartriskdata = pd.concat([input_df, X], axis=0)
 
 input_df
     
