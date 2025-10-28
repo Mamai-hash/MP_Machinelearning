@@ -77,6 +77,9 @@ with st.sidebar:
     sysBP = st.slider('sysBP (mmHg)', min_value=83.5, max_value=295.0, value=132.4)
     totChol = st.slider('totChol (mg/dL)', min_value=10.07, max_value=696.0, value=236.7)
 
+# 1. ENCODE INPUTS (These must happen inside the function)
+    sex_encoded = 1 if input_sex == 'male' else 0
+    stroke_encoded = 1 if input_prevalentstroke == 'Yes (1)' else 0
 # Create a Dataframe for the input features   
 data = {
     # User Input Features (6 required)
