@@ -88,7 +88,7 @@ data = { 'sex':sex,
        'sysBP':sysBP,
        'totChol':totChol}
 iinput_df = pd.DataFrame(data,index=[0])
-input_heartrisk = pd.concat([input_df,x],axis=1)
+input_heartrisk = pd.concat([input_df,x],axis=age)
 
 input_df
     
