@@ -78,7 +78,7 @@ with st.sidebar:
     totChol = st.slider('totChol (mg/dL)', min_value=10.07, max_value=696.0, value=236.7)
 
 # Create a Dataframe for the input features   
-data = 'male': sex_encoded,
+data = {'male': sex_encoded,
         'age': input_age,
         'prevalentstroke': stroke_encoded,
         'sysBP': input_sysBP,
