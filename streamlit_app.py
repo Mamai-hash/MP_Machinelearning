@@ -18,13 +18,10 @@ with st.expander('Data'):
     st.write('**Raw data**')
     st.dataframe(df)
 
-    st.write('**X (Features)**')
-    X = df.drop('TenYearCHD', axis=1)
-    st.dataframe(X)
-
-    st.write('**Y (Target Variable)**')
-    Y = df.TenYearCHD
-    st.dataframe(Y)
+# Define X, Y, and mean_values globally right after loading the data.
+mean_values = df.mean()
+X = df.drop('TenYearCHD', axis=1)
+Y = df['TenYearCHD']
 
 # --- Data Visualization (Aesthetics) ---
 with st.expander('Data visualization'):
