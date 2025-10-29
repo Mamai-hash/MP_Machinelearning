@@ -101,7 +101,7 @@ data = {
         'diaBP': mean_values['diaBP'],
         'BMI': mean_values['BMI'],
         'glucose': mean_values['glucose'],
-} 
+       } 
  # Create DataFrame, ensuring the columns match the exact order of the training data (X.columns)
 input_df = pd.DataFrame([data], columns=X.columns, index=[0])
 
