@@ -82,23 +82,23 @@ with st.sidebar:
           sex_encoded = 1 if input_sex == 'male' else 0
           stroke_encoded = 1 if input_prevalentstroke == 'Yes (1)' else 0
 # Create a Dataframe for the input features   
-data = {
-     'sex': sex_encoded,
-     'age': input_age,
-     'prevalentstroke': stroke_encoded,
-     'sysBP': input_sysBP,
-     'totChol': input_totChol,
-     'heartRate': input_heartRate,
-     'education': mean_values['education'],
-     'currentSmoker': mean_values['currentSmoker'],
-     'cigsPerDay': mean_values['cigsPerDay'],
-     'BPMeds': mean_values['BPMeds'],
-     'prevalentHyp': mean_values['prevalentHyp'],
-     'diabetes': mean_values['diabetes'],
-     'diaBP': mean_values['diaBP'],
-     'BMI': mean_values['BMI'],
-     'glucose': mean_values['glucose'],
-       } 
+          data = {
+         'sex': sex_encoded,
+         'age': input_age,
+         'prevalentstroke': stroke_encoded,
+         'sysBP': input_sysBP,
+         'totChol': input_totChol,
+         'heartRate': input_heartRate,
+         'education': mean_values['education'],
+         'currentSmoker': mean_values['currentSmoker'],
+         'cigsPerDay': mean_values['cigsPerDay'],
+         'BPMeds': mean_values['BPMeds'],
+         'prevalentHyp': mean_values['prevalentHyp'],
+         'diabetes': mean_values['diabetes'],
+         'diaBP': mean_values['diaBP'],
+         'BMI': mean_values['BMI'],
+         'glucose': mean_values['glucose'],
+           } 
  # Create DataFrame, ensuring the columns match the exact order of the training data (X.columns)
 input_df = pd.DataFrame([data], columns=X.columns, index=[0])
 
