@@ -83,7 +83,7 @@ with st.sidebar:
           stroke_encoded = 1 if input_prevalentstroke == 'Yes (1)' else 0
 # Create a Dataframe for the input features   
 data = {
-        'male': sex_encoded,
+        'sex': sex_encoded,
         'age': input_age,
         'prevalentstroke': stroke_encoded,
         'sysBP': input_sysBP,
