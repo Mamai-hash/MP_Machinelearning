@@ -83,15 +83,12 @@ with st.sidebar:
           stroke_encoded = 1 if input_prevalentstroke == 'Yes (1)' else 0
 # Create a Dataframe for the input features   
 data = {
-    # User Input Features (6 required)
         'male': sex_encoded,
         'age': input_age,
         'prevalentstroke': stroke_encoded,
         'sysBP': input_sysBP,
         'totChol': input_totChol,
         'heartRate': input_heartRate,
-
-    # Imputed features (9 required, using mean_values)
         'education': mean_values['education'],
         'currentSmoker': mean_values['currentSmoker'],
         'cigsPerDay': mean_values['cigsPerDay'],
